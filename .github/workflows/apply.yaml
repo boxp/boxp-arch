@@ -99,7 +99,7 @@ jobs:
           # https://suzuki-shunsuke.github.io/tfaction/docs/feature/drift-detection
           repositories: >-
             [
-              "test-tfaction-drift-issues"
+              "arch"
             ]
 
       - run: tfaction get-or-create-drift-issue
