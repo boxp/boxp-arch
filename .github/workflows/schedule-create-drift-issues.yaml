@@ -26,7 +26,9 @@ jobs:
             }
           # repository where Drift Detection issues are hosted
           repositories: >-
-            ["test-tfaction-drift-issues"]
+            [
+              "${{github.event.repository.name}}",
+            ]
 
       - uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
