@@ -46,7 +46,7 @@ jobs:
               "pull_requests": "read"
             }
           repositories: >-
-            ["${{github.event.repository.name}}"]
+            ["${{GITHUB_REPOSITORY#${{GITHUB_REPOSITORY_OWNER}}/}}"]
 
       - uses: suzuki-shunsuke/get-pr-action@b002e41164d7a39586b41f17f9caca4e98a1efe4 # v0.1.0
         id: pr
