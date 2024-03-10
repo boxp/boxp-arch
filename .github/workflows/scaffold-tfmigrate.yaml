@@ -1,0 +1,52 @@
+---
+name: Scaffold tfmigrate
+run-name: Scaffold tfmigrate (${{inputs.target}})
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'target'
+        required: true
+      migration_name:
+        description: 'migration name. e.g. "import_foo"'
+        required: true
+      pr_number:
+        description: Pull Request Number
+        required: false
+env:
+  TFACTION_TARGET: ${{github.event.inputs.target}}
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
+        with:
+          app_id: ${{secrets.APP_ID}}
+          private_key: ${{secrets.APP_PRIVATE_KEY}}
+          # pull_requests:write - Create pull requests
+          # contents:write - Push commits
+          permissions: >-
+            {
+              "pull_requests": "write",
+              "contents": "write"
+            }
+          repositories: >-
+            ["${{github.event.repository.name}}"]
+
+      - uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
+        with:
+          aqua_version: v2.23.2
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+
+      - uses: suzuki-shunsuke/tfaction/scaffold-tfmigrate@b03dfcc9d26de824ca0d7fc385d0bb4986d6642e # v1.2.0
+        with:
+          github_token: ${{steps.generate_token.outputs.token}}
+          migration_name: ${{github.event.inputs.migration_name}}
+          pr_number: ${{inputs.pr_number}}

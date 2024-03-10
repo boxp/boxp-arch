@@ -1,0 +1,30 @@
+---
+name: Release a Terraform Module
+run-name: Release a Terraform Module (${{inputs.module_path}} ${{inputs.version}})
+on:
+  workflow_dispatch:
+    inputs:
+      module_path:
+        description: 'Module path'
+        required: true
+      version:
+        description: 'Module version'
+        required: true
+env:
+  TFACTION_TARGET: ${{github.event.inputs.module_path}}
+jobs:
+  release-module:
+    name: "release-module (${{github.event.inputs.module_path}})"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To create a release
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
+        with:
+          aqua_version: v2.23.2
+
+      - uses: suzuki-shunsuke/tfaction/release-module@b03dfcc9d26de824ca0d7fc385d0bb4986d6642e # v1.2.0
+        with:
+          version: ${{ github.event.inputs.version }}
+          module_path: ${{ github.event.inputs.module_path }}
