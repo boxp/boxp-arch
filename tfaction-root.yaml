@@ -25,7 +25,7 @@ aqua:
     skip_push: false # default is false
     prune: true # default is false
 
-env:
+# env:
   # Environment variables
   # <environment variable name>: <value>
   # FOO: foo
