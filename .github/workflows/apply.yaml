@@ -98,9 +98,7 @@ jobs:
           # GitHub Repository where Drift Detection issues are hosted
           # https://suzuki-shunsuke.github.io/tfaction/docs/feature/drift-detection
           repositories: >-
-            [
-              "${{github.event.repository.name}}",
-            ]
+            ["${{github.event.repository.name}}"]
 
       - run: tfaction get-or-create-drift-issue
         shell: bash
@@ -121,9 +119,7 @@ jobs:
               "issues": "write"
             }
           repositories: >-
-            [
-              "${{github.event.repository.name}}",
-            ]
+            ["${{github.event.repository.name}}"]
 
       - uses: suzuki-shunsuke/tfaction/setup@b03dfcc9d26de824ca0d7fc385d0bb4986d6642e # v1.2.0
         with:
@@ -148,9 +144,7 @@ jobs:
               "issues": "write"
             }
           repositories: >-
-            [
-              "${{github.event.repository.name}}",
-            ]
+            ["${{github.event.repository.name}}"]
 
       - uses: suzuki-shunsuke/tfaction/apply@b03dfcc9d26de824ca0d7fc385d0bb4986d6642e # v1.2.0
         with:
@@ -171,9 +165,7 @@ jobs:
               "pull_requests": "write"
             }
           repositories: >-
-            [
-              "${{github.event.repository.name}}"
-            ]
+            ["${{github.event.repository.name}}"]
 
       - uses: suzuki-shunsuke/tfaction/create-follow-up-pr@b03dfcc9d26de824ca0d7fc385d0bb4986d6642e # v1.2.0
         if: failure()
