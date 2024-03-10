@@ -3,7 +3,7 @@ resource "aws_iam_user" "external_secrets_operator_user" {
 }
 
 resource "aws_iam_role" "external_secrets_role" {
-  name               = "external-secrets-role"
+  name = "external-secrets-role"
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
