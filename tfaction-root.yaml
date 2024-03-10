@@ -65,7 +65,7 @@ target_groups:
   template_dir: templates/aws # This is used by `scaffold-working-dir` action
   terraform_command: terraform
   drift_detection:
-    enabled: true
+    enabled: false
   terraform_plan_config:
     aws_assume_role_arn: arn:aws:iam::839695154978:role/GitHubActions_Terraform_AWS_terraform_plan
   tfmigrate_plan_config:
