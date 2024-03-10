@@ -1,14 +1,8 @@
-# migration "state" "import_tfaction" {
-#   actions = [
-#     "mv aws_security_group.foo aws_security_group.foo2",
-#     "import aws_security_group.foo foo",
-#   ]
-# }
-
-# migration "multi_state" "import_tfaction" {
-#   from_dir = "../foo"
-#   to_dir   = "."
-#   actions = [
-#     "mv aws_security_group.foo aws_security_group.foo2",
-#   ]
-# }
+migration "state" "import_tfaction" {
+  actions = [
+    "import aws_iam_role_policy_attachment.terraform_apply_admin terraform_apply_admin",
+    "import aws_iam_role_policy_attachment.terraform_plan_readonly terraform_plan_readonly",
+    "import aws_iam_role_policy_attachment.tfmigrate_plan_readonly tfmigrate_plan_readonly",
+    "import aws_iam_role_policy_attachment.tfmigrate_apply_readonly tfmigrate_apply_readonly",
+  ]
+}
