@@ -1,11 +1,11 @@
 module "aws" {
-  source = "github.com/suzuki-shunsuke/terraform-aws-tfaction"
+  source = "github.com/suzuki-shunsuke/terraform-aws-tfaction?ref=v0.2.1"
 
-  name                               = "AWS"
-  repo                               = "boxp/arch"
-  main_branch                        = "main"
-  s3_bucket_tfmigrate_history_name   = ""
-  s3_bucket_terraform_state_name     = ""
+  name                             = "AWS"
+  repo                             = "boxp/arch"
+  main_branch                      = "main"
+  s3_bucket_tfmigrate_history_name = ""
+  s3_bucket_terraform_state_name   = ""
 }
 
 # Attach Policies
