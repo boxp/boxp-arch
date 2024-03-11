@@ -33,7 +33,7 @@ resource "aws_iam_role" "external_secrets_role" {
 # 上記ポリシーをロールにアタッチ
 resource "aws_iam_role_policy_attachment" "external_secrets_policy_attachment" {
   role       = aws_iam_role.external_secrets_role.name
-  policy_arn = aws_iam_policy_document.external_secret_policy.arn
+  policy_arn = data.aws_iam_policy_document.external_secret_policy.arn
 }
 
 # External Secret Operatorが利用するIAMユーザー
