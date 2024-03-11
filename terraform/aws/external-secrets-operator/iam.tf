@@ -1,31 +1,50 @@
-resource "aws_iam_group" "external_secrets_operator_group" {
-  name = "external-secrets-operator-group"
-}
-
-resource "aws_iam_user" "external_secrets_operator_user" {
-  name = "exteral-secrets-operator-user"
-}
-
-resource "aws_iam_group_membership" "external_secrets_operator_membership" {
-  name  = "external-secrets-operator-membership"
-  users = [aws_iam_user.external_secrets_operator_user.name]
-  group = aws_iam_group.external_secrets_operator_group.name
-}
-
-resource "aws_iam_group_policy" "external_secrets_policy" {
-  name  = "external-secrets-policy"
-  group = aws_iam_group.external_secrets_operator_group.name
+# External Secret OperatorがSSMを読み取るためのIAMポリシー
+# 動的にパラメータが増えるのでワイルドカードを許容する
+#trivy:ignore:AVD-AWS-0057
+resource "aws_iam_policy" "external_secret_policy" {
+  name        = "external_secret_policy"
+  description = "Policy for accessing SSM parameters"
 
   policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Effect" : "Allow",
-        "Principal" : {
-          "Service" : "es.amazonaws.com"
-        },
-        "Action" : "sts:AssumeRole"
-      }
-    ]
+    Version = "2012-10-17",
+    Statement = [{
+      Effect = "Allow",
+      Action = [
+        "ssm:GetParameter",
+        "ssm:GetParameters",
+        "ssm:GetParametersByPath"
+      ],
+      Resource = [
+        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-dev-*",
+        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-stage-*",
+        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-prod-*"
+      ]
+    }]
   })
+}
+
+# External Secret OperatorがアタッチするIAMロール
+resource "aws_iam_role" "external_secrets_role" {
+  name = "external_secrets_role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Effect = "Allow",
+      Principal = {
+        AWS = "*"
+      },
+      Action = "sts:AssumeRole"
+    }]
+  })
+}
+
+# 上記ポリシーをロールにアタッチ
+resource "aws_iam_role_policy_attachment" "external_secrets_policy_attachment" {
+  role       = aws_iam_role.external_secrets_role.name
+  policy_arn = aws_iam_policy.external_secret_policy.arn
+}
+
+# External Secret Operatorが利用するIAMユーザー
+resource "aws_iam_user" "external_secrets_user" {
+  name = "external_secrets_user"
 }
