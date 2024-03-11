@@ -1,5 +1,4 @@
 # External Secret OperatorがSSMを読み取るためのIAMポリシー
-# External Secret OperatorがSSMを読み取るためのIAMポリシー
 resource "aws_iam_policy" "external_secret_policy" {
   name        = "external_secret_policy"
   description = "Policy for accessing SSM parameters"
