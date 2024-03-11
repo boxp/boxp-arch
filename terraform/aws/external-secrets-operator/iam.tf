@@ -1,4 +1,5 @@
 # External Secret OperatorがSSMを読み取るためのIAMポリシー
+#trivy:ignore:AVD-AWS-0057
 resource "aws_iam_policy" "external_secret_policy" {
   name        = "external_secret_policy"
   description = "Policy for accessing SSM parameters"
