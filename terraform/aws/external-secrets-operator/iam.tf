@@ -3,17 +3,17 @@
 resource "aws_iam_policy" "external_secret_policy" {
   name        = "external_secret_policy"
   description = "Policy for accessing SSM parameters"
-  
+
   policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [{
-      Effect    = "Allow",
-      Action    = [
+      Effect = "Allow",
+      Action = [
         "ssm:GetParameter",
         "ssm:GetParameters",
         "ssm:GetParametersByPath"
       ],
-      Resource  = [
+      Resource = [
         "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-dev-*",
         "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-stage-*",
         "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-prod-*"
@@ -24,15 +24,15 @@ resource "aws_iam_policy" "external_secret_policy" {
 
 # External Secret OperatorがアタッチするIAMロール
 resource "aws_iam_role" "external_secrets_role" {
-  name               = "external_secrets_role"
+  name = "external_secrets_role"
   assume_role_policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [{
-      Effect    = "Allow",
+      Effect = "Allow",
       Principal = {
         AWS = "*"
       },
-      Action    = "sts:AssumeRole"
+      Action = "sts:AssumeRole"
     }]
   })
 }
