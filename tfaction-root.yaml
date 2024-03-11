@@ -1,5 +1,5 @@
 ---
-plan_workflow_name: plan
+plan_workflow_name: pull_request_target
 
 draft_pr: false # default is false. If `draft_pr` is true, tfaction creates pull requests as draft
 base_working_directory: "" # default is empty, which means the current directory
