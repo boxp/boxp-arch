@@ -21,10 +21,10 @@ resource "aws_iam_group_policy" "external_secrets_policy" {
     "Statement" : [
       {
         "Effect" : "Allow",
-        "Principal" : {
-          "Service" : "es.amazonaws.com"
-        },
-        "Action" : "sts:AssumeRole"
+        "Action" : [
+          "ssm:GetParameters"
+        ],
+        "Resource" : "*"
       }
     ]
   })
