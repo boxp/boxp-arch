@@ -1,4 +1,5 @@
-# tfivy:ignore:AVD-AWS-0123 ESO が accessToken を使って認証のみをサポートしている様子なので、このポリシーは諦める
+# ESO が accessToken を使って認証のみをサポートしている様子なので、このポリシーは諦める
+# tfivy:ignore:AVD-AWS-0123
 resource "aws_iam_group" "external_secrets_operator_group" {
   name = "external-secrets-operator-group"
 }
