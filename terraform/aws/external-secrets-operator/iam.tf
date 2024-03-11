@@ -1,3 +1,4 @@
+# tfivy:ignore:AVD-AWS-0123 ESO が accessToken を使って認証のみをサポートしている様子なので、このポリシーは諦める
 resource "aws_iam_group" "external_secrets_operator_group" {
   name = "external-secrets-operator-group"
 }
@@ -24,7 +25,7 @@ resource "aws_iam_group_policy" "external_secrets_policy" {
         "Action" : [
           "ssm:GetParameters"
         ],
-        "Resource" : "*"
+        "Resource" : "arn:aws:ssm:*:*:parameter/*"
       }
     ]
   })
