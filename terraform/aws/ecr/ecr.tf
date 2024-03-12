@@ -1,3 +1,7 @@
+resource "aws_kms_key" "ecr_kms" {
+	enable_key_rotation = true
+}
+
 resource "aws_ecr_repository" "boxp" {
   name                 = "boxp"
   image_tag_mutability = "IMMUTABLE"
