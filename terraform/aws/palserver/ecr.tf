@@ -1,5 +1,5 @@
 resource "aws_kms_key" "ecr_kms" {
-	enable_key_rotation = true
+  enable_key_rotation = true
 }
 
 resource "aws_ecr_repository" "palserver" {
@@ -11,7 +11,7 @@ resource "aws_ecr_repository" "palserver" {
   }
 
   encryption_configuration {
-      encryption_type = "KMS"
-      kms_key = aws_kms_key.ecr_kms.key_id
+    encryption_type = "KMS"
+    kms_key         = aws_kms_key.ecr_kms.key_id
   }
 }
