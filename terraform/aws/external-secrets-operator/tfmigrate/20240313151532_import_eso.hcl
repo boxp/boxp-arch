@@ -5,5 +5,5 @@ migration "state" "import_eso" {
     "import aws_iam_role_policy_attachment.external_secrets_policy_attachment external_secrets_role/arn:aws:iam::839695154978:policy/external_secret_policy",
     "import aws_iam_user.external_secrets_user external_secrets_user",
   ]
-  skip_plan = true
+  force = true
 }
