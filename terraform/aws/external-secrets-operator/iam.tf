@@ -15,9 +15,7 @@ resource "aws_iam_policy" "external_secret_policy" {
         "ssm:GetParametersByPath"
       ],
       Resource = [
-        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-dev-*",
-        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-stage-*",
-        "arn:aws:ssm:ap-northeast-1:839695154978:parameter/eso-prod-*"
+        "*",
       ]
     }]
   })
