@@ -1,7 +1,6 @@
 resource "aws_kms_key" "ecr_kms" {
   enable_key_rotation = true
 }
-
 resource "aws_ecr_repository" "palserver" {
   name                 = "palserver"
   image_tag_mutability = "IMMUTABLE"
