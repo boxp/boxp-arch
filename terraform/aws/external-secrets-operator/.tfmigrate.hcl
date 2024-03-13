@@ -1,8 +1,9 @@
 tfmigrate {
   migration_dir = "./tfmigrate"
   history {
-    storage "local" {
-      path = "./history.json"
+    storage "s3" {
+      bucket = "tfaction-history"
+      key    = "terraform/aws/external-secrets-operator/history.json"
     }
   }
 }
