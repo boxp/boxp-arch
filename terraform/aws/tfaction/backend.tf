@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.0"
   backend "s3" {
     bucket = "tfaction-state"
-    key    = "%%TARGET%%/v1/terraform.tfstate"
+    key    = "terraform/aws/tfaction/v1/terraform.tfstate"
     region = "ap-northeast-1"
   }
   required_providers {
