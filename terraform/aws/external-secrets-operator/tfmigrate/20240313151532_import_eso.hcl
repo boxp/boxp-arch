@@ -1,14 +1,8 @@
-# migration "state" "import_eso" {
-#   actions = [
-#     "mv aws_security_group.foo aws_security_group.foo2",
-#     "import aws_security_group.foo foo",
-#   ]
-# }
-
-# migration "multi_state" "import_eso" {
-#   from_dir = "../foo"
-#   to_dir   = "."
-#   actions = [
-#     "mv aws_security_group.foo aws_security_group.foo2",
-#   ]
-# }
+migration "state" "import_eso" {
+  actions = [
+    "import aws_iam_policy.external_secret_policy arn:aws:iam::839695154978:policy/external_secret_policy",
+    "import aws_iam_role.external_secrets_role external_secrets_role",
+    "import aws_iam_role_policy_attachment.external_secrets_policy_attachment external_secrets_role/arn:aws:iam::839695154978:policy/external_secret_policy",
+    "import aws_iam_user.external_secrets_user external_secrets_user",
+  ]
+}
