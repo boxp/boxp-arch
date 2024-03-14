@@ -26,6 +26,6 @@ EOF
 }
 
 resource "aws_iam_user_policy_attachment" "ecr_pull_user_policy_attachment" {
-  user       = aws_iam_user.k8s_ecr_token_updater_user
+  user       = aws_iam_user.k8s_ecr_token_updater_user.name
   policy_arn = aws_iam_policy.ecr_pull_policy.arn
 }
