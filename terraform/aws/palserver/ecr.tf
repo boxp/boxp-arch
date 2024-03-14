@@ -6,8 +6,8 @@ resource "aws_ecr_repository" "palserver" {
     scan_on_push = true
   }
 
-# terraform planが非常に不安定になったのでkms keyはdefaultにする
-#trivy:ignore:AVD-AWS-0057
+  # terraform planが非常に不安定になったのでkms keyはdefaultにする
+  #trivy:ignore:AVD-AWS-0057
   encryption_configuration {
     encryption_type = "KMS"
   }
