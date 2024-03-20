@@ -23,10 +23,9 @@ resource "aws_ecr_lifecycle_policy" "palserver_lifecycle_policy" {
         rulePriority = 1
         description  = "limit the number of images to 3"
         selection = {
-          tagStatus     = "any"
-          countType     = "imageCountMoreThan"
-          countNumber   = 3
-          tagPrefixList = []
+          tagStatus   = "any"
+          countType   = "imageCountMoreThan"
+          countNumber = 3
         }
         action = {
           type = "expire"
