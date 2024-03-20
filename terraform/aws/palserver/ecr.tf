@@ -26,7 +26,6 @@ resource "aws_ecr_lifecycle_policy" "palserver_lifecycle_policy" {
           tagStatus     = "any"
           countType     = "imageCountMoreThan"
           countNumber   = 3
-          tagPrefixList = []
         }
         action = {
           type = "expire"
