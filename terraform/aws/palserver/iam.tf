@@ -47,7 +47,7 @@ resource "aws_iam_policy" "palserver_gha_policy" {
           "ecr:CompleteLayerUpload",
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:ecr:ap-northeast-1:${var.aws_account_id}:repository/boxp/palserver"
+        Resource = "arn:aws:ecr:ap-northeast-1:${var.aws_account_id}:repository/palserver"
       },
       {
         Effect = "Allow"
