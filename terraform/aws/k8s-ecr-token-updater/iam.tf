@@ -20,7 +20,8 @@ resource "aws_iam_policy" "ecr_pull_policy" {
         "ecr:GetDownloadUrlForLayer",
         "ecr:BatchGetImage",
         "ecr:BatchCheckLayerAvailability",
-        "ecr:GetAuthorizationToken"
+        "ecr:GetAuthorizationToken",
+        "ecr:ListImages"
       ],
       "Resource": "*"
     }
