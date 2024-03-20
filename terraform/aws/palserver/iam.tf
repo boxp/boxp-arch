@@ -26,6 +26,8 @@ resource "aws_iam_role" "palserver_gha_role" {
   assume_role_policy = data.aws_iam_policy_document.palserver_gha_assume_role_policy.json
 }
 
+# ecr:GetAuthorizationToken が リソースレベルのアクセス許可をサポートしていないため、全リソースに対して許可する
+#trivy:ignore:AVD-AWS-0057
 resource "aws_iam_policy" "palserver_gha_policy" {
   name        = "palserver-gha-policy"
   path        = "/"
@@ -43,10 +45,16 @@ resource "aws_iam_policy" "palserver_gha_policy" {
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
           "ecr:CompleteLayerUpload",
-          "ecr:GetAuthorizationToken",
         ]
         Effect   = "Allow"
         Resource = "arn:aws:ecr:ap-northeast-1:${var.aws_account_id}:repository/boxp/palserver"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ecr:GetAuthorizationToken"
+        ]
+        Resource = "*"
       },
     ]
   })
