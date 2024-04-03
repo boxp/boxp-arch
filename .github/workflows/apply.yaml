@@ -149,6 +149,9 @@ jobs:
       - uses: suzuki-shunsuke/tfaction/apply@ac2de2c8d88ff0e2e91388b434feee69c8373ad2 # v1.3.2
         with:
           github_token: ${{ steps.apply_token.outputs.token }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{secrets.gh_cloudflare_api_token}} # For cloudflare provider
+
 
       - name: Generate token for creating follow up pr
         id: follow_up_pr_token
