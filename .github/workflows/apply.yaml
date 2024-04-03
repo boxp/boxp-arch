@@ -150,7 +150,7 @@ jobs:
         with:
           github_token: ${{ steps.apply_token.outputs.token }}
         env:
-          CLOUDFLARE_API_TOKEN: ${{secrets.gh_cloudflare_api_token}} # For cloudflare provider
+          CLOUDFLARE_API_TOKEN: ${{secrets.CLOUDFLARE_API_TOKEN}} # For cloudflare provider
 
 
       - name: Generate token for creating follow up pr
