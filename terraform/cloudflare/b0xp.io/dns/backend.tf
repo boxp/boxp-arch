@@ -1,10 +1,9 @@
 terraform {
-  backend "remote" {
-    organization = "hakoniwa"
-
-    workspaces {
-      name = "cloudflare"
-    }
+  required_version = ">= 1.0"
+  backend "s3" {
+    bucket = "tfaction-state"
+    key    = "terraform/cloudflare/b0xp.io/dns/v1/terraform.tfstate"
+    region = "ap-northeast-1"
   }
 
   required_providers {

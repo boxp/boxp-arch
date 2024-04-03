@@ -1,3 +1,8 @@
+import {
+  to = cloudflare_record.terraform_managed_resource_1e2fbbba66fdf0c6df71effb39d15b9c
+  id = "${zone}/${cloudflare_record.terraform_managed_resource_1e2fbbba66fdf0c6df71effb39d15b9c.id}"
+}
+
 resource "cloudflare_record" "terraform_managed_resource_1e2fbbba66fdf0c6df71effb39d15b9c" {
   name    = "pal"
   proxied = true

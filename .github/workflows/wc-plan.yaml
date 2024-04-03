@@ -14,6 +14,8 @@ on:
         required: true
       gh_app_private_key:
         required: true
+      gh_cloudflare_api_token:
+        required: true
 
 jobs:
   plan:
@@ -125,6 +127,7 @@ jobs:
         env:
           TFPROVIDERCHECK_CONFIG_BODY: |
             providers:
+              - name: registry.terraform.io/cloudflare/cloudflare
               - name: registry.terraform.io/hashicorp/aws
               - name: registry.terraform.io/hashicorp/google
               - name: registry.terraform.io/hashicorp/null
@@ -137,9 +140,11 @@ jobs:
           github_token: ${{steps.generate_token.outputs.token}}
         env:
           GITHUB_TOKEN: ${{steps.generate_token.outputs.token}} # For GitHub Provider and reviewdog and github-comment
+          CLOUDFLARE_API_TOKEN: ${{secrets.gh_cloudflare_api_token}} # For cloudflare provider
 
       - uses: suzuki-shunsuke/tfaction/plan@ac2de2c8d88ff0e2e91388b434feee69c8373ad2 # v1.3.2
         with:
           github_token: ${{steps.generate_token.outputs.token}}
         env:
           GITHUB_TOKEN: ${{steps.generate_token.outputs.token}} # For GitHub Provider and tfcmt and github-comment
+          CLOUDFLARE_API_TOKEN: ${{secrets.gh_cloudflare_api_token}} # For cloudflare provider
