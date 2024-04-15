@@ -3,7 +3,7 @@ resource "cloudflare_access_application" "grafana" {
   zone_id          = var.zone_id
   name             = "Access application for grafana.b0xp.io"
   domain           = "grafana.b0xp.io"
-  session_duration = "1h"
+  session_duration = "24h"
 }
 
 # Creates an Access policy for the application.
