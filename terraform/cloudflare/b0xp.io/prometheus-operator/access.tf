@@ -14,8 +14,8 @@ resource "cloudflare_access_policy" "grafana_policy" {
   precedence     = "1"
   decision       = "allow"
   include {
-    github {
-      name = "boxp"
-    }
+    # github {
+    #   name = "boxp"
+    # }
   }
 }
