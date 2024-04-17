@@ -10,7 +10,7 @@ resource "cloudflare_tunnel" "prometheus_operator_tunnel" {
 
 # Creates the configuration for the tunnel.
 resource "cloudflare_tunnel_config" "prometheus_operator_tunnel" {
-  tunnel_id = cloudflare_tunnel.auto_tunnel.id
+  tunnel_id = cloudflare_tunnel.prometheus_operator_tunnel.id
   account_id = var.account_id
   config {
    ingress_rule {
