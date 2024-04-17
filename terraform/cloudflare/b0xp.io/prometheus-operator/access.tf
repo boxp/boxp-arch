@@ -14,6 +14,6 @@ resource "cloudflare_access_policy" "grafana_policy" {
   precedence     = "1"
   decision       = "allow"
   include {
-    login_method = ["GitHub"]
+    login_method = ["GitHub/cloudflare boxp sso"]
   }
 }
