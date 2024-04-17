@@ -19,6 +19,6 @@ resource "cloudflare_access_policy" "grafana_policy" {
   precedence     = "1"
   decision       = "allow"
   include {
-    login_method = [cloudflare_access_identity_provider.github.id]
+    login_method = [data.cloudflare_access_identity_provider.github.id]
   }
 }
