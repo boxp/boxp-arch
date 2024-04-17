@@ -14,7 +14,7 @@ resource "cloudflare_tunnel_config" "prometheus_operator_tunnel" {
   account_id = var.account_id
   config {
    ingress_rule {
-     hostname = "${cloudflare_record.grafana.hostname}"
+     hostname = cloudflare_record.grafana.hostname
      service  = "http://grafana:3000"
    }
    ingress_rule {
