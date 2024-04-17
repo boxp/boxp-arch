@@ -6,6 +6,11 @@ resource "cloudflare_access_application" "grafana" {
   session_duration = "24h"
 }
 
+data "cloudflare_access_identity_provider" "github" {
+  zone_id = var.zone_id
+  name    = "GitHub"
+}
+
 # Creates an Access policy for the application.
 resource "cloudflare_access_policy" "grafana_policy" {
   application_id = cloudflare_access_application.grafana.id
@@ -14,9 +19,6 @@ resource "cloudflare_access_policy" "grafana_policy" {
   precedence     = "1"
   decision       = "allow"
   include {
-    login_method = ["Github"]
-  }
-  require {
-    email = ["tiyotiyouda@gmail.com"]
+    login_method = [cloudflare_access_identity_provider.github.id]
   }
 }
