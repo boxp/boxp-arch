@@ -16,4 +16,7 @@ resource "cloudflare_access_policy" "grafana_policy" {
   include {
     login_method = ["GitHub/cloudflare boxp sso"]
   }
+  require {
+    email = ["tiyotiyouda@gmail.com"]
+  }
 }
