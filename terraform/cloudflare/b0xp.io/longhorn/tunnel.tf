@@ -15,7 +15,7 @@ resource "cloudflare_tunnel_config" "longhorn_tunnel" {
   config {
     ingress_rule {
       hostname = cloudflare_record.longhorn.hostname
-      service  = "http://longhorn-ui:80"
+      service  = "http://longhorn-frontend:80"
     }
     ingress_rule {
       service = "http_status:404"
