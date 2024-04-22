@@ -6,13 +6,13 @@ locals {
 resource "cloudflare_record" "top" {
   zone_id = var.zone_id
   name    = "@"
-  value   = page
+  value   = local.page
   type    = "CNAME"
 }
 
 resource "cloudflare_record" "www" {
   zone_id = var.zone_id
   name    = "www"
-  value   = page
+  value   = local.page
   type    = "CNAME"
 }
