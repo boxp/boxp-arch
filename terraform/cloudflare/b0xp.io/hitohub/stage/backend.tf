@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.0"
   backend "s3" {
     bucket = "tfaction-state"
-    key    = "terraform/cloudflare/b0xp.io/longhorn/v1/terraform.tfstate"
+    key    = "terraform/cloudflare/b0xp.io/hitohub/stage/v1/terraform.tfstate"
     region = "ap-northeast-1"
   }
 
