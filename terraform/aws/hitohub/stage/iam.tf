@@ -47,7 +47,7 @@ resource "aws_iam_policy" "hitohub_stage_gha_policy" {
           "ecr:CompleteLayerUpload",
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:ecr:ap-northeast-1:${var.aws_account_id}:repository/hitohub-stage"
+        Resource = "arn:aws:ecr:ap-northeast-1:${var.aws_account_id}:repository/hitohub-*-stage"
       },
       {
         Effect = "Allow"
