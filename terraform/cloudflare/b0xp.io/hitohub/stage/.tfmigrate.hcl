@@ -3,7 +3,7 @@ tfmigrate {
   history {
     storage "s3" {
       bucket = "tfaction-history"
-      key    = "terraform/cloudflare/b0xp.io/longhorn/history.json"
+      key    = "terraform/cloudflare/b0xp.io/hitohub/stage/history.json"
     }
   }
 }
