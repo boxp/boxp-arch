@@ -12,7 +12,7 @@ data "cloudflare_access_identity_provider" "github" {
 }
 
 # Creates an Access policy for the application.
-resource "cloudflare_access_policy" "hitohub_stage_policy" {
+resource "cloudflare_access_policy" "hitohub_prod_policy" {
   application_id = cloudflare_access_application.hitohub.id
   zone_id        = var.zone_id
   name           = "policy for hitohub.b0xp.io"
