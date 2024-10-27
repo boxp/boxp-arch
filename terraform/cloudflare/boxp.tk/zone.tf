@@ -1,7 +1,5 @@
 # Cloudflareに追加するドメイン情報
 resource "cloudflare_zone" "boxp_tk" {
-  account = {
-    id = var.account_id
-  }
-  name = "boxp.tk"  # ドメイン名
+  account_id = var.account_id  # CloudflareのアカウントID
+  zone = "boxp.tk"  # ドメイン名
 }
