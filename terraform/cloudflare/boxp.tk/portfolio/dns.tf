@@ -1,4 +1,4 @@
-resource "cloudflare_page_rule" "redirect_top {
+resource "cloudflare_page_rule" "redirect_top" {
   zone_id  = var.zone_id                        # ドメインのzone ID
   target   = "https://boxp.tk/*"     # リダイレクト元
   priority = 1                                 # ルールの優先度
