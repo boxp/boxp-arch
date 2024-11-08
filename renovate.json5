@@ -13,7 +13,6 @@
   major: {
     automerge: false,
   },
-  automerge: true,
   platformAutomerge: true,
   prHourlyLimit: 10,
   prConcurrentLimit: 10,
