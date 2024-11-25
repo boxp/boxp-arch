@@ -6,7 +6,7 @@ resource "cloudflare_page_rule" "redirect_top" {
   actions {
     forwarding_url {
       url         = "https://www.b0xp.io/$1" # リダイレクト先URL
-      status_code = 301                   # 301リダイレクト
+      status_code = 301                      # 301リダイレクト
     }
   }
 }
@@ -19,7 +19,7 @@ resource "cloudflare_page_rule" "redirect_www" {
   actions {
     forwarding_url {
       url         = "https://www.b0xp.io/$1" # リダイレクト先URL
-      status_code = 301                   # 301リダイレクト
+      status_code = 301                      # 301リダイレクト
     }
   }
 }
