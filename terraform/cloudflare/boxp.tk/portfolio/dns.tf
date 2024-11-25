@@ -23,3 +23,4 @@ resource "cloudflare_page_rule" "redirect_www" {
     }
   }
 }
+
