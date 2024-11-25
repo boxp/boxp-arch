@@ -5,8 +5,8 @@ resource "cloudflare_page_rule" "redirect_hitohub_prod" {
 
   actions {
     forwarding_url {
-      url         = "https://hitohub.b0xp.io" # リダイレクト先URL
-      status_code = 301                       # 301リダイレクト
+      url         = "https://hitohub.b0xp.io/$1" # リダイレクト先URL
+      status_code = 301                          # 301リダイレクト
     }
   }
 }
