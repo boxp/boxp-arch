@@ -13,3 +13,11 @@ resource "cloudflare_record" "www" {
   value   = "@"
   proxied = true
 }
+
+resource "cloudflare_record" "hitohub" {
+  zone_id = cloudflare_zone.boxp_tk.id
+  name    = "hitohub"
+  type    = "CNAME"
+  value   = "@"
+  proxied = true
+}
