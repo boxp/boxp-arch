@@ -10,7 +10,7 @@ resource "cloudflare_record" "www" {
   zone_id = cloudflare_zone.boxp_tk.id
   name    = "www"
   type    = "CNAME"
-  content = "@"
+  content = "boxp.tk"
   proxied = true
 }
 
@@ -18,6 +18,6 @@ resource "cloudflare_record" "hitohub" {
   zone_id = cloudflare_zone.boxp_tk.id
   name    = "hitohub"
   type    = "CNAME"
-  content = "@"
+  content = "boxp.tk"
   proxied = true
 }
