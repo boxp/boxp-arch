@@ -23,7 +23,7 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
 
   include {
     github {
-      identity_provider_id = data.cloudflare_access_identity_provider.github.id
+      identity_provider_id = data.cloudflare_zero_trust_access_identity_provider.github.id
       email                = ["*"]
       subject              = var.allowed_github_oidc_subjects
     }
