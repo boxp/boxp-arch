@@ -1,0 +1,8 @@
+# Creates the CNAME record that routes k8s.b0xp.io to the tunnel.
+resource "cloudflare_record" "k8s" {
+  zone_id = var.zone_id
+  name    = "k8s"
+  value   = cloudflare_tunnel.k8s_tunnel.cname
+  type    = "CNAME"
+  proxied = true
+}
