@@ -5,14 +5,14 @@ resource "cloudflare_zero_trust_access_application" "k8s" {
   domain           = "k8s.b0xp.io"
 }
 
-data "cloudflare_access_identity_provider" "github" {
+data "cloudflare_zero_trust_access_identity_provider" "github" {
   zone_id = var.zone_id
   name    = "GitHub"
 }
 
-resource "cloudflare_access_policy" "github_actions_access" {
+resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   application_id = cloudflare_zero_trust_access_application.k8s.id
-  account_id     = var.cloudflare_account_id
+  account_id     = var.account_id
   name           = "GitHub Actions Access Policy"
   decision       = "allow"
   precedence     = 1
