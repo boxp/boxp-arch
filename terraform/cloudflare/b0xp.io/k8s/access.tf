@@ -19,9 +19,7 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
 
   include {
     ip = var.allowed_github_actions_ip_ranges
-  }
 
-  include {
     github {
       identity_provider_id = data.cloudflare_zero_trust_access_identity_provider.github.id
     }
