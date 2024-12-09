@@ -18,7 +18,6 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   account_id     = var.account_id
   name           = "GitHub Actions Access Policy"
   decision       = "allow"
-  precedence     = 1
 
   require {
     ip = var.allowed_github_actions_ip_ranges
