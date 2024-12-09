@@ -12,7 +12,7 @@ data "cloudflare_zero_trust_access_identity_provider" "github" {
 
 resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   application_id = cloudflare_zero_trust_access_application.k8s.id
-  account_id     = var.account_id
+  zone_id     = var.zone_id
   name           = "GitHub Actions Access Policy"
   decision       = "allow"
   precedence     = 1
