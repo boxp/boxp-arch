@@ -17,9 +17,11 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   decision       = "allow"
   precedence     = 1
 
-  include {
+  require {
     ip = var.allowed_github_actions_ip_ranges
+  }
 
+  include {
     github {
       identity_provider_id = data.cloudflare_zero_trust_access_identity_provider.github.id
     }
