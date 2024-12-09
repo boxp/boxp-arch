@@ -2,7 +2,7 @@
 resource "cloudflare_record" "k8s" {
   zone_id = var.zone_id
   name    = "k8s"
-  value   = cloudflare_zero_trust_tunnel_cloudflared.k8s_tunnel.cname
+  content = cloudflare_zero_trust_tunnel_cloudflared.k8s_tunnel.cname
   type    = "CNAME"
   proxied = true
 }
