@@ -4,9 +4,9 @@ resource "cloudflare_zero_trust_access_application" "k8s" {
   name    = "Access application for k8s.b0xp.io"
   domain  = "k8s.b0xp.io"
 
-  policies = [ 
+  policies = [
     cloudflare_zero_trust_access_policy.github_actions_access.id
-   ]
+  ]
 }
 
 data "cloudflare_zero_trust_access_identity_provider" "github" {
@@ -15,9 +15,9 @@ data "cloudflare_zero_trust_access_identity_provider" "github" {
 }
 
 resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
-  account_id     = var.account_id
-  name           = "GitHub Actions Access Policy"
-  decision       = "allow"
+  account_id = var.account_id
+  name       = "GitHub Actions Access Policy"
+  decision   = "allow"
 
   require {
     ip = var.allowed_github_actions_ip_ranges
