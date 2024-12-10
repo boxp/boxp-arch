@@ -4909,3 +4909,9 @@ variable "service_token_id" {
   type        = string
   default     = "04a75e03-ac20-467e-bf01-6333445089d1"
 }
+
+variable "service_token_id" {
+  description = "The ID of the service token to include in the policy."
+  type        = string
+  default     = "04a75e03-ac20-467e-bf01-6333445089d1"
+}

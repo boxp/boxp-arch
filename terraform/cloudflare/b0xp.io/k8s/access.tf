@@ -9,11 +9,6 @@ resource "cloudflare_zero_trust_access_application" "k8s" {
   ]
 }
 
-data "cloudflare_zero_trust_access_identity_provider" "github" {
-  zone_id = var.zone_id
-  name    = "GitHub"
-}
-
 resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   account_id = var.account_id
   name       = "GitHub Actions Access Policy"
@@ -24,6 +19,6 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   }
 
   include {
-    login_method = [data.cloudflare_zero_trust_access_identity_provider.github.id]
+    service_token = [var.service_token_id]
   }
 }
