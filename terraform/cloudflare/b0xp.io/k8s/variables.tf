@@ -18,6 +18,6 @@ variable "allowed_github_actions_ip_ranges" {
 
 variable "service_token_id" {
   description = "The ID of the service token to include in the policy."
-  type = string
-  default = "04a75e03-ac20-467e-bf01-6333445089d1"
+  type        = string
+  default     = "04a75e03-ac20-467e-bf01-6333445089d1"
 }
