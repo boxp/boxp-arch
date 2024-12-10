@@ -20,7 +20,7 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
 
   include {
     service_token = {
-      token_id = var.service_token_id
+      token_id = [var.service_token_id]
     }
   }
 }
