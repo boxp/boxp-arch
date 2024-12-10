@@ -14,10 +14,6 @@ resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
   name       = "GitHub Actions Access Policy"
   decision   = "allow"
 
-  require {
-    ip = var.allowed_github_actions_ip_ranges
-  }
-
   include {
     service_token = [var.service_token_id]
   }
