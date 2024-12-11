@@ -3,25 +3,18 @@ resource "cloudflare_zero_trust_access_application" "k8s" {
   zone_id = var.zone_id
   name    = "Access application for k8s.b0xp.io"
   domain  = "k8s.b0xp.io"
-}
 
-data "cloudflare_zero_trust_access_identity_provider" "github" {
-  zone_id = var.zone_id
-  name    = "GitHub"
+  policies = [
+    cloudflare_zero_trust_access_policy.github_actions_access.id
+  ]
 }
 
 resource "cloudflare_zero_trust_access_policy" "github_actions_access" {
-  application_id = cloudflare_zero_trust_access_application.k8s.id
-  account_id     = var.account_id
-  name           = "GitHub Actions Access Policy"
-  decision       = "allow"
-  precedence     = 1
+  account_id = var.account_id
+  name       = "GitHub Actions Access Policy"
+  decision   = "allow"
 
   include {
-    ip = var.allowed_github_actions_ip_ranges
-
-    github {
-      identity_provider_id = data.cloudflare_zero_trust_access_identity_provider.github.id
-    }
+    service_token = [var.service_token_id]
   }
 }

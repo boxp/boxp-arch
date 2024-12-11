@@ -10,8 +10,8 @@ variable "zone_id" {
   default     = "ec593206d0ef695c3aae3a4cb3173264"
 }
 
-variable "allowed_github_actions_ip_ranges" {
-  description = "GitHub Actions IP ranges (can be obtained from GitHub documentation)"
-  type        = list(string)
-  default     = ["192.30.252.0/22", "185.199.108.0/22", "140.82.112.0/20"]
+variable "service_token_id" {
+  description = "The ID of the service token to include in the policy."
+  type        = string
+  default     = "04a75e03-ac20-467e-bf01-6333445089d1"
 }
