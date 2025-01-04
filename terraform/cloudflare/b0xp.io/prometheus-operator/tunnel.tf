@@ -18,6 +18,10 @@ resource "cloudflare_tunnel_config" "prometheus_operator_tunnel" {
       service  = "http://grafana:3000"
     }
     ingress_rule {
+      hostname = cloudflare_record.prometheus_web.hostname
+      service  = "http://prometheus-k8s:9090"
+    }
+    ingress_rule {
       service = "http_status:404"
     }
   }
