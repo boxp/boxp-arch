@@ -7,7 +7,7 @@ resource "cloudflare_access_application" "grafana" {
 }
 
 # Creates an Access application to control who can connect.
-resource "cloudflare_access_application" "prometheus-web" {
+resource "cloudflare_access_application" "prometheus_web" {
   zone_id          = var.zone_id
   name             = "Access application for prometheus-web.b0xp.io"
   domain           = "prometheus-web.b0xp.io"
