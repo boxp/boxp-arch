@@ -32,7 +32,7 @@ resource "cloudflare_access_policy" "grafana_policy" {
 }
 
 # Creates an Access policy for the application.
-resource "cloudflare_access_policy" "grafana_policy" {
+resource "cloudflare_access_policy" "prometheus_web_policy" {
   application_id = cloudflare_access_application.prometheus_web.id
   zone_id        = var.zone_id
   name           = "policy for prometheus-web.b0xp.io"
